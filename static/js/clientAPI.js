@@ -178,6 +178,12 @@ $(document).ready(function() {
         localStorage.removeItem(sendTemp);
         localStorage.removeItem(statsTemp);
     }
+
+    if (window.location.search.indexOf("automated_test") > -1) {
+        api.run();
+        api.send();
+        api.getNumberFP();
+    }
 });
 
 
