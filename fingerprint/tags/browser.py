@@ -5,6 +5,7 @@ tor4 = "Tor 4.X"
 tor5 = "Tor 5.X"
 tor6 = "Tor 6.X"
 torbrowser70 = "Tor Browser 7.0"
+torbrowser80 = "Tor Browser 8.0"
 chrome = "Chrome"
 firefox = "Firefox" #NB: A Tor browser cannot have the Firefox tag
 edge = "Edge"
@@ -20,7 +21,13 @@ class Browser(Tag):
     def checkTags(self, fp):
         ua = fp["User-Agent"]
         #We check first for UA from Tor browsers
-        if ua == "Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0":
+        if ua == "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0":
+            return [torbrowser80]
+        elif ua == "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:60.0) Gecko/20100101 Firefox/60.0":
+            return [torbrowser80]
+        elif ua == "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0":
+            return [torbrowser80]
+        elif ua == "Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0":
             return [torbrowser70]
         elif ua == "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0":
             return [tor6]
