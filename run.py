@@ -14,7 +14,7 @@ import hashlib
 import sys
 
 
-###### App
+###### App
 app = Flask(__name__)
 app.debug = config.debug
 
@@ -101,14 +101,14 @@ def about():
 def store():
     return json.dumps(db.storeFP(request.data,True))
 
-###### Babel
+###### Babel
 babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(config.LANGUAGES.keys())
 
-###### DB
+###### DB
 class Db(object):
 
     def __init__(self):
@@ -299,7 +299,7 @@ class Db(object):
 db = Db()
 
 
-###### API
+###### API
 def jsonResponse(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
